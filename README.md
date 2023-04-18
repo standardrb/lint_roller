@@ -56,14 +56,16 @@ end
 ```
 
 And that's pretty much it. Just a declarative way to identify your plugin,
-detect whether it supports the given context (e.g. the current `runner` and
-`engine` and their respective `_version`s), and then provides your custom
-configuration as a [LintRoller::Rules](lib/lint_roller/rules.rb) object.
+detect whether it supports the given
+[LintRoller::Context](/lib/lint_roller_context.rb) (e.g. the current `runner`
+and `engine` and their respective `_version`s), for which the plugin will
+ultimately its configuration as a [LintRoller::Rules](/lib/lint_roller/rules.rb)
+object.
 
 ## Packaging a plugin in a gem
 
-In order for a formatter to use your plugin, it needs to know where to what path
-to require and the name of your plugin class to instantiate and invoke.
+In order for a formatter to use your plugin, it needs to know what path to
+require as well as the name of the plugin class to instantiate and invoke.
 
 To make this work seamlessly for your users without additional configuration of
 their own, all you need to do is specify a metadata attribute called
