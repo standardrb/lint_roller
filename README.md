@@ -19,7 +19,7 @@ this example plugin for banana-related static analysis:
 
 ```ruby
 module BananaRoller
-  class Plugin
+  class Plugin < LintRoller::Plugin
     # `config' is a Hash of options passed to the plugin by the user
     def initialize(config = {})
       @alternative = config["alternative"] ||= "chocolate"
@@ -36,11 +36,7 @@ module BananaRoller
 
     # `context' is an instance of LintRoller::Context provided by the runner
     def supported?(context)
-      if context.engine == :rubocop
-        true
-      else
-        false
-      end
+      context.engine == :rubocop
     end
 
     # `context' is an instance of LintRoller::Context provided by the runner
@@ -175,4 +171,3 @@ including (but not limited to) one-on-one communications, public posts/comments,
 code reviews, pull requests, and GitHub issues. If violations occur, Test Double
 will take any action they deem appropriate for the infraction, up to and
 including blocking a user from the organization's repositories.
-
