@@ -65,7 +65,7 @@ module LintRoller
       ), SampleRoller.new.rules(Context.new)
       assert_equal Rules.new(
         error: Error.new("Unexpected Boom")
-      ), SampleRoller.new({💥: true}).rules(Context.new)
+      ), SampleRoller.new({:💥 => true}).rules(Context.new)
     end
   end
 end
