@@ -18,5 +18,15 @@ module LintRoller
     def rules(context)
       raise Error.new("Please implement `rules(context)` and return an instance of LintRoller::Rules")
     end
+
+    def to_s
+      if about.name && about.version
+        "#{about.name} #{about.version}"
+      elsif about.name
+        about.name
+      else
+        inspect
+      end
+    end
   end
 end
