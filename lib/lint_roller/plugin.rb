@@ -18,5 +18,9 @@ module LintRoller
     def rules(context)
       raise Error.new("Please implement `rules(context)` and return an instance of LintRoller::Rules")
     end
+
+    def <=>(other)
+      about.name <=> other.about.name
+    end
   end
 end
