@@ -4,11 +4,10 @@
 and formatters. It provides plugins for those tools to load extensions and
 specify custom rulesets.
 
-(As of this release, only [Standard
-Ruby](https://github.com/standardrb/standard) supports `lint_roller` plugins,
-but we think [RuboCop](https://github.com/rubocop/rubocop) could add support and
-most plugins would be compatible with both `rubocop` and `standardrb`.
-Additionally, there's nothing that would prevent other tools like
+(As of this release, only [RuboCop](https://github.com/rubocop/rubocop) and
+[Standard Ruby](https://github.com/standardrb/standard) support `lint_roller` plugins,
+but we think other tools could add support and most plugins would be compatible with
+both `rubocop` and `standardrb`. Additionally, there's nothing that would prevent tools like
 [rufo](https://github.com/ruby-formatter/rufo) from adopting it.)
 
 ## How to make a plugin
@@ -86,8 +85,8 @@ extensions. Hence, `"Standard::Custom::Plugin"` instead of
 
 ## Using your plugin
 
-Once you've made your plugin, here's how it's configured from a Standard Ruby
-`.standard.yml` file.
+Once you've made your plugin, here's how it's configured from a RuboCop
+`.rubocop.yml` file or Standard Ruby `.standard.yml` file.
 
 ### If your plugin is packaged as a gem
 
@@ -97,14 +96,14 @@ makes the least work for your users.
 
 If your gem name is `banana_roller` and you've set
 `spec.metadata["default_lint_roller_plugin"]` to `"BananaRoller::Plugin"`, then
-your users could just add this to their `.standard.yml` file:
+your users could just add this to their `.rubocop.yml` file or `.standard.yml` file:
 
 ```yaml
 plugins:
   - banana_roller
 ```
 
-And that's it! During initialization, `standardrb` will `require
+And that's it! During initialization, `rubocop` or `standardrb` will `require
 "banana_roller"` and know to call `BananaRoller::Plugin.new(config)` to
 instantiate it.
 
