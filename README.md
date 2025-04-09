@@ -4,12 +4,7 @@
 and formatters. It provides plugins for those tools to load extensions and
 specify custom rulesets.
 
-(As of this release, only [Standard
-Ruby](https://github.com/standardrb/standard) supports `lint_roller` plugins,
-but we think [RuboCop](https://github.com/rubocop/rubocop) could add support and
-most plugins would be compatible with both `rubocop` and `standardrb`.
-Additionally, there's nothing that would prevent other tools like
-[rufo](https://github.com/ruby-formatter/rufo) from adopting it.)
+As of April 2025, both [Standard Ruby](https://github.com/standardrb/standard) and [RuboCop](https://github.com/rubocop/rubocop) rely on this gem for publishing plugins. And because `lint_roller` only specifies the basic lifecycle hooks a plugin system might need (as opposed to configuration formats or protocols), there's nothing preventing other tools like [rufo](https://github.com/ruby-formatter/rufo) or [brakeman](https://github.com/presidentbeef/brakeman) from adopting it. With broader support, a single gem could theoretically bundle separate configurations for many different analysis tools at a single version release (imagine a `seattle-style` gem, an official set of Sorbet recommendations, or an easy-to-distribute set of organization-wide styles).
 
 ## How to make a plugin
 
