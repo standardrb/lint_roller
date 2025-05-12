@@ -48,7 +48,7 @@ end
 
 And that's pretty much it. Just a declarative way to identify your plugin,
 detect whether it supports the given
-[LintRoller::Context](/lib/lint_roller_context.rb) (e.g. the current `runner`
+[LintRoller::Context](/lib/lint_roller/context.rb) (e.g. the current `runner`
 and `engine` and their respective `_version`s), for which the plugin will
 ultimately its configuration as a [LintRoller::Rules](/lib/lint_roller/rules.rb)
 object.
