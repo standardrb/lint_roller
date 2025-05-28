@@ -58,6 +58,8 @@ module LintRoller
       assert sample_roller.supported?(Context.new(runner: :standard))
       refute sample_roller.supported?(Context.new(runner: :rufo))
 
+      assert_equal sample_roller.to_s, 'sample-roller 1.2.3'
+
       assert_equal Rules.new(
         type: :path,
         config_format: :rubocop,
