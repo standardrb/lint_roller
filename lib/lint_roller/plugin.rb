@@ -1,5 +1,7 @@
 module LintRoller
   class Plugin
+    include Comparable
+
     # `config' is a Hash of options passed to the plugin by the user
     def initialize(config = {})
       @config = config
