@@ -1,5 +1,7 @@
 module LintRoller
   class Plugin
+    include Comparable
+
     # `config' is a Hash of options passed to the plugin by the user
     def initialize(config = {})
       @config = config
@@ -17,6 +19,10 @@ module LintRoller
     # `context' is an instance of LintRoller::Context provided by the runner
     def rules(context)
       raise Error.new("Please implement `rules(context)` and return an instance of LintRoller::Rules")
+    end
+
+    def <=>(other)
+      about.name <=> other.about.name
     end
   end
 end
