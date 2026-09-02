@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+- Reduce temporary hashes and redundant lookups when merging upstream rule metadata.
+
 ## [1.1.0]
 
 - Add `LintRoller::Support` module of classes designed to make it a little
