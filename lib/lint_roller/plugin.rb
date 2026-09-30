@@ -22,7 +22,7 @@ module LintRoller
     end
 
     def <=>(other)
-      about.name <=> other.about.name
+      about <=> other.about
     end
   end
 end
