@@ -24,5 +24,15 @@ module LintRoller
     def <=>(other)
       about.name <=> other.about.name
     end
+
+    def to_s
+      if about.name && about.version
+        "#{about.name} (#{about.version})"
+      elsif about.name
+        about.name
+      else
+        inspect
+      end
+    end
   end
 end
