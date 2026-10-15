@@ -2,21 +2,20 @@ module LintRoller
   module Support
     class MergesUpstreamMetadata
       def merge(plugin_yaml, upstream_yaml)
-        common_upstream_values = upstream_yaml.select { |key| plugin_yaml.key?(key) }
+        result = plugin_yaml.dup
 
-        plugin_yaml.merge(common_upstream_values) { |key, plugin_value, upstream_value|
-          if plugin_value.is_a?(Hash) && upstream_value.is_a?(Hash)
-            plugin_value.merge(upstream_value) { |sub_key, plugin_sub_value, upstream_sub_value|
-              if plugin_value.key?(sub_key)
-                plugin_sub_value
-              else
-                upstream_sub_value
-              end
-            }
-          else
-            plugin_value
-          end
-        }
+        upstream_yaml.each do |key, upstream_value|
+          next unless result.key?(key)
+
+          plugin_value = result[key]
+          next unless plugin_value.is_a?(Hash) && upstream_value.is_a?(Hash)
+
+          result[key] = plugin_value.merge(upstream_value) { |_sub_key, plugin_sub_value, _upstream_sub_value|
+            plugin_sub_value
+          }
+        end
+
+        result
       end
     end
   end
